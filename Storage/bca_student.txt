@@ -1,0 +1,6 @@
+  ID |               NAME | COURSE |            EMAIL ADDRESS
+3242 |         Aman Singh |    BCA |      as2211075@gmail.com
+5643 |     Himanshu Bisht |    BCA |     himanshu22@gamil.com
+9374 |        Anant Singh |    BCA |       anant838@gmail.com
+2344 |    Ashutosh Shukla |    BCA |    ashutosh123@gmail.com
+3422 |        Anish Kumar |    BCA |      anishk123@gmail.com

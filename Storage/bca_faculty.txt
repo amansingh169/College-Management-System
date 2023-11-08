@@ -1,0 +1,6 @@
+  ID |               NAME | COURSE |            EMAIL ADDRESS
+1533 |      Shweta Sharma |    BCA |         ss1234@gmail.com
+1765 |    Deepak Tripathi |    BCA |       deepu123@gmail.com
+3132 |     Krishan Kansal |    BCA |     krishan123@gmail.com
+7464 |       Anita Kumari |    BCA |     anita12345@gmail.com
+8474 |  Naveen K. Kashyap |    BCA |     naveenk123@gmail.com
