@@ -10,7 +10,10 @@
 #define BLUE "\033[34m"
 #define RESET "\033[0m"
 
-using std::cin, std::cout, std::endl, std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
 
 // functions to get the user input to make an entry
 void getStudentInput(string &name, string &id, string &course, string &email);
@@ -32,16 +35,16 @@ int main()
     // variables to take input from the uesr
     string name, id, course, email, st_id, fc_id;
 
-    cout << BLUE << "\n==========================================\n";
-    cout << "Welcome to College Management System (CMS)\n";
-    cout << "==========================================\n\n" << RESET;
+    cout << GREEN << "\n==========================================\n"
+                 << "Welcome to College Management System (CMS)\n"
+                 << "==========================================\n\n" << RESET;
 
     int user;
-    cout << "Who are you?\n";
+    cout << BLUE << "Who are you?\n\n";
     cout << "(1) Head of Department (HoD)\n";
     cout << "(2) Coordinator\n";
     cout << "(3) Faculty\n";
-    cout << "(4) Exit\n";
+    cout << RED << "(4) Exit\n" << RESET;
     cin >> user;
 
     if (user == 4)
@@ -87,7 +90,7 @@ int main()
         tries++;
         if (tries == 1)
         {
-            cout << "Enter your password to access the software:\n";
+            cout<< BLUE << "Enter the password to authenticate yourself:\n" << RESET;
             cin >> pass;
         }
         else if (tries > 1)
@@ -110,7 +113,7 @@ int main()
             do
             {
                 // selecting the department/section
-                cout << BLUE << "\nSelect the department:\n";
+                cout << BLUE << "\nSelect the department:\n\n";
                 cout << "(1) BCA\n";
                 cout << "(2) MCA\n";
                 cout << RED << "(3) Exit\n" << RESET;
@@ -122,7 +125,7 @@ int main()
                     do
                     {
                         // list of actions
-                        cout << BLUE << "Select the action to perform:\n";
+                        cout << BLUE << "\nSelect the action to perform:\n\n";
                         cout << "(1) Show all student data\n";
                         cout << "(2) Show all faculty data\n";
                         if (canEnterStudentData)
@@ -153,7 +156,7 @@ int main()
                                 (ch == 1 ? st.setstudentdata(name, id, course, email) : st1.setstudentdata(name, id, course, email));
                             }
                             else
-                                cout << RED << "You are not allowed to enter student data!\n" << RESET;
+                                cout << RED << "\nYou are not allowed to enter student data!\n" << RESET;
                             break;
 
                         case '4':
@@ -163,44 +166,44 @@ int main()
                                 (ch == 1 ? fc.setfacultydata(name, id, course, email) : fc1.setfacultydata(name, id, course, email));
                             }
                             else
-                                cout << RED << "You are not allowed to enter faculty data!\n" << RESET;
+                                cout << RED << "\nYou are not allowed to enter faculty data!\n" << RESET;
                             break;
 
                         case '5':
-                            cout << BLUE << "Enter any detail of the student (ID, Name, Email address):\n";
+                            cout << BLUE << "\nEnter any detail of the student (ID, Name, Email address):\n";
                             cin >> st_id;
                             (ch == 1 ? st.stid_display(st_id) : st1.stid_display(st_id));
                             break;
 
                         case '6':
-                            cout << BLUE << "Enter any detail of the faculty (ID, Name, Email address):\n";
+                            cout << BLUE << "\nEnter any detail of the faculty (ID, Name, Email address):\n";
                             cin >> fc_id;
                             (ch == 1 ? fc.fcid_display(fc_id) : fc1.fcid_display(fc_id));
                             break;
 
                         case '7':
-                            cout << RED << "Exiting this section!\n" << RESET;
+                            cout << RED << "\nExiting this section!\n" << RESET;
                             break;
 
                         default:
-                            cout << RED << "Please enter a valid choice!\n" << RESET;
+                            cout << RED << "\nPlease enter a valid choice!\n" << RESET;
                             break;
                         }
                     } while (department_choice != '7');
                 }
                 else if(ch == 3)
                 {
-                    cout << RED << "Exiting the system. Goodbye!\n" << RESET;
+                    cout << RED << "\nExiting the system. Goodbye!\n" << RESET;
                 }
                 else
                 {
-                    cout << RED << "Please enter a valid choice!\n" << RESET;
+                    cout << RED << "\nPlease enter a valid choice!\n" << RESET;
                 }
             } while (ch != 3);
         }
         else
         {
-            cout << RED << "Incorrect password!\n" << RESET;
+            cout << RED << "\nIncorrect password!\n" << RESET;
         }
     } while (pass != *correctPassword);
 
@@ -210,7 +213,7 @@ int main()
 // definition of input functions
 void getStudentInput(string &name, string &id, string &course, string &email)
 {
-    cout << BLUE << "Enter the student full name: ";
+    cout << BLUE << "\nEnter the student full name: ";
     cin.ignore();
     getline(cin, name);
     cout << "Enter the student ID: ";
@@ -224,7 +227,7 @@ void getStudentInput(string &name, string &id, string &course, string &email)
 
 void getFacultyInput(string &name, string &id, string &course, string &email)
 {
-    cout << GREEN << "Enter the faculty full name: ";
+    cout << GREEN << "\nEnter the faculty full name: ";
     cin.ignore();
     getline(cin, name);
     cout << "Enter the faculty ID: ";
