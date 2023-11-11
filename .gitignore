@@ -1,4 +1,3 @@
-.vscode
-*.exe
-testing.cpp
+.vscode/
+CMS.exe
 stuffLearnt.txt
