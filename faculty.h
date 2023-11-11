@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #define RED "\033[31m"
 #define BLUE "\033[34m"
 #define YELLOW "\033[33m"
@@ -25,15 +24,16 @@ public:
 
 void bca_fcdata::setfacultydata(string name, string id, string course, string email)
 {
-    ofstream f("Storage/bca_faculty.txt", ios::app);
-    if (!f)
+    ofstream fo("Storage/bca_faculty.txt", ios::app);
+    if (!fo)
         cout << RED << "Error entering the data!\n" << RESET;
     else
     {
-        f << setw(4) << id << " | " << setw(18) << name << " | " << setw(6) << course << " | " << setw(24) << email << endl;
-        cout << GREEN << "Data entered sucessfully!\n";
+        // using setw() from iomanip header file to align the text in storage files
+        fo << setw(4) << id << " | " << setw(18) << name << " | " << setw(6) << course << " | " << setw(24) << email << endl;
+        cout << GREEN << "\nData entered sucessfully!\n";
     }
-    f.close();
+    fo.close();
 }
 
 void bca_fcdata::displayfacultydata()
@@ -45,6 +45,7 @@ void bca_fcdata::displayfacultydata()
         cout << RED << "Error fetching details!\n" << RESET;
     else
     {
+        // printing the whole text file
         while (getline(fi, line))
         {
             cout << YELLOW << line << endl;
@@ -64,16 +65,15 @@ void bca_fcdata::fcid_display(string id)
     }
     else
     {
-        while (getline(f, line))
+        while (getline(f, line)) // reads/traverses every line of the text file
         {
-            if (line.find(id) != string::npos)
+            if (line.find(id) != string::npos) // searches & if finds the id in the line in iteration
             {
-                cout << YELLOW << "\n  ID |               NAME | COURSE |            EMAIL ADDRESS\n"
-                     << line << "\n\n";
+                cout << YELLOW << "\n  ID |               NAME | COURSE |            EMAIL ADDRESS\n" << line << "\n\n";
                 break;
             }
         }
-        if (line.find(id) == string::npos)
+        if (line.find(id) == string::npos) // if find function returns (string::npos)
         {
             cout << RED << "\nNo such record found!\n\n" << RESET;
         }
@@ -82,17 +82,19 @@ void bca_fcdata::fcid_display(string id)
     f.close();
 }
 
+// concepts same as bca member functions are used here
+
 void mca_fcdata::setfacultydata(string name, string id, string course, string email)
 {
-    ofstream f("Storage/mca_faculty.txt", ios::app);
-    if (!f)
+    ofstream fo("Storage/mca_faculty.txt", ios::app);
+    if (!fo)
         cout << RED << "Error entering the data!\n" << RESET;
     else
     {
-        f << setw(4) << id << " | " << setw(18) << name << " | " << setw(6) << course << " | " << setw(24) << email << endl;
-        cout << GREEN << "Data entered sucessfully!\n";
+        fo << setw(4) << id << " | " << setw(18) << name << " | " << setw(6) << course << " | " << setw(24) << email << endl;
+        cout << GREEN << "\nData entered sucessfully!!!\n\n" << RESET;
     }
-    f.close();
+    fo.close();
 }
 
 void mca_fcdata::displayfacultydata()

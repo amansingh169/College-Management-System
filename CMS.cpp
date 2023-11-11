@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include <string>
 
 // including user defined header files
 #include "student.h"
@@ -36,9 +39,10 @@ int main()
     string name, id, course, email, st_id, fc_id;
 
     cout << GREEN << "\n==========================================\n"
-                 << "Welcome to College Management System (CMS)\n"
-                 << "==========================================\n\n" << RESET;
+                    << "Welcome to College Management System (CMS)\n"
+                    << "==========================================\n\n" << RESET;
 
+    // asking user their role in the college
     int user;
     cout << BLUE << "Who are you?\n\n";
     cout << "(1) Head of Department (HoD)\n";
@@ -47,13 +51,15 @@ int main()
     cout << RED << "(4) Exit\n" << RESET;
     cin >> user;
 
+    // if user chooses 4, return 0 (exit the program)
     if (user == 4)
     {
         cout << RED << "Exiting the system. Goodbye!\n" << RESET;
         return 0;
     }
 
-    const string *correctPassword;   // pointer to the passwords of different roles
+    // pointer to the passwords of different roles
+    const string *correctPassword;
     
     // limitations given for low authority roles
     bool canEnterFacultyData = true;
@@ -97,13 +103,13 @@ int main()
         {
             cout << endl << BLUE << "Try again:\n" << RESET;
             cin >> pass;
-        }
 
-        if (tries == 5)
-        {
             // exiting the program when the try limit is exceeded
-            cout << RED << "You have exceeded 5 tries, the application is locked for this session!\n" << RESET;
-            break;
+            if (tries == 5)
+            {
+                cout << RED << "You have exceeded the trial limit, the application is locked for this session!\n" << RESET;
+                return 0;
+            }
         }
 
         if (pass == *correctPassword)
@@ -137,15 +143,20 @@ int main()
                         cout << RED << "(7) Exit this section\n" << RESET;
                         cin >> department_choice;
                         
+
                         // ----------------------------THE CORE OF THE PROGRAM----------------------------
+
+
                         // calling the respective functions upon the choice made
                         switch (department_choice)
                         {
                         case '1':
+                            // call func from st(BCA) object if the user chose bca else call func from st2(MCA)
                             (ch == 1 ? st.displaystudentdata() : st1.displaystudentdata());
                             break;
 
                         case '2':
+                            // call func from fc(BCA) object if the user chose bca else call func from fc2(MCA)
                             (ch == 1 ? fc.displayfacultydata() : fc1.displayfacultydata());
                             break;
 
@@ -153,9 +164,11 @@ int main()
                             if (canEnterStudentData)
                             {
                                 getStudentInput(name, id, course, email);
+                                // add the data to BCA if user chose BCA else MCA
                                 (ch == 1 ? st.setstudentdata(name, id, course, email) : st1.setstudentdata(name, id, course, email));
                             }
                             else
+                                // show warning message if user is a faculty
                                 cout << RED << "\nYou are not allowed to enter student data!\n" << RESET;
                             break;
 
@@ -163,9 +176,11 @@ int main()
                             if (canEnterFacultyData)
                             {
                                 getFacultyInput(name, id, course, email);
+                                // add the data to BCA if user chose BCA else MCA
                                 (ch == 1 ? fc.setfacultydata(name, id, course, email) : fc1.setfacultydata(name, id, course, email));
                             }
                             else
+                                // show warning message if user is either a faculty or a coordinator
                                 cout << RED << "\nYou are not allowed to enter faculty data!\n" << RESET;
                             break;
 
@@ -199,7 +214,7 @@ int main()
                 {
                     cout << RED << "\nPlease enter a valid choice!\n" << RESET;
                 }
-            } while (ch != 3);
+            } while (ch != 3); // loop runs until the user doesn't select exit (3)
         }
         else
         {
