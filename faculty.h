@@ -1,8 +1,10 @@
-#define RED "\033[31m"
-#define BLUE "\033[34m"
-#define YELLOW "\033[33m"
-#define GREEN "\033[32m"
-#define RESET "\033[0m"
+#include "colors.hpp"
+
+#define red colors::bright_red
+#define blue colors::bright_cyan
+#define yellow colors::bright_yellow
+#define green colors::bright_green
+#define reset colors::reset
 
 using namespace std;
 
@@ -26,12 +28,12 @@ void bca_fcdata::setfacultydata(string name, string id, string course, string em
 {
     ofstream fo("Storage/bca_faculty.txt", ios::app);
     if (!fo)
-        cout << RED << "Error entering the data!\n" << RESET;
+        cout << red << "Error entering the data!\n" << reset;
     else
     {
         // using setw() from iomanip header file to align the text in storage files
         fo << setw(4) << id << " | " << setw(18) << name << " | " << setw(6) << course << " | " << setw(24) << email << endl;
-        cout << GREEN << "\nData entered sucessfully!\n";
+        cout << green << "\nData entered sucessfully!\n";
     }
     fo.close();
 }
@@ -40,15 +42,15 @@ void bca_fcdata::displayfacultydata()
 {
     string line;
     ifstream fi("Storage/bca_faculty.txt");
-    cout << BLUE << "List of Faculty :\n\n";
+    cout << blue << "List of Faculty :\n\n";
     if (!fi)
-        cout << RED << "Error fetching details!\n" << RESET;
+        cout << red << "Error fetching details!\n" << reset;
     else
     {
         // printing the whole text file
         while (getline(fi, line))
         {
-            cout << YELLOW << line << endl;
+            cout << yellow << line << endl;
         }
         cout << endl;
     }
@@ -61,7 +63,7 @@ void bca_fcdata::fcid_display(string id)
 
     if (!f)
     {
-        cout << RED << "Error fetching details!\n" << RESET;
+        cout << red << "Error fetching details!\n" << reset;
     }
     else
     {
@@ -69,13 +71,13 @@ void bca_fcdata::fcid_display(string id)
         {
             if (line.find(id) != string::npos) // searches & if finds the id in the line in iteration
             {
-                cout << YELLOW << "\n  ID |               NAME | COURSE |            EMAIL ADDRESS\n" << line << "\n\n";
+                cout << yellow << "\n  ID |               NAME | COURSE |            EMAIL ADDRESS\n" << line << "\n\n";
                 break;
             }
         }
         if (line.find(id) == string::npos) // if find function returns (string::npos)
         {
-            cout << RED << "\nNo such record found!\n\n" << RESET;
+            cout << red << "\nNo such record found!\n\n" << reset;
         }
     }
 
@@ -88,11 +90,11 @@ void mca_fcdata::setfacultydata(string name, string id, string course, string em
 {
     ofstream fo("Storage/mca_faculty.txt", ios::app);
     if (!fo)
-        cout << RED << "Error entering the data!\n" << RESET;
+        cout << red << "Error entering the data!\n" << reset;
     else
     {
         fo << setw(4) << id << " | " << setw(18) << name << " | " << setw(6) << course << " | " << setw(24) << email << endl;
-        cout << GREEN << "\nData entered sucessfully!!!\n\n" << RESET;
+        cout << green << "\nData entered sucessfully!!!\n\n" << reset;
     }
     fo.close();
 }
@@ -101,14 +103,14 @@ void mca_fcdata::displayfacultydata()
 {
     string line;
     ifstream fi("Storage/mca_faculty.txt");
-    cout << BLUE << "List of Faculty :\n\n";
+    cout << blue << "List of Faculty :\n\n";
     if (!fi)
-        cout << RED << "Error fetching details!\n" << RESET;
+        cout << red << "Error fetching details!\n" << reset;
     else
     {
         while (getline(fi, line))
         {
-            cout << YELLOW << line << endl;
+            cout << yellow << line << endl;
         }
         cout << endl;
     }
@@ -121,7 +123,7 @@ void mca_fcdata::fcid_display(string id)
 
     if (!f)
     {
-        cout << RED << "Error fetching details!\n" << RESET;
+        cout << red << "Error fetching details!\n" << reset;
     }
     else
     {
@@ -129,14 +131,14 @@ void mca_fcdata::fcid_display(string id)
         {
             if (line.find(id) != string::npos)
             {
-                cout << YELLOW << "\n  ID |               NAME | COURSE |            EMAIL ADDRESS\n"
+                cout << yellow << "\n  ID |               NAME | COURSE |            EMAIL ADDRESS\n"
                      << line << "\n\n";
                 break;
             }
         }
         if (line.find(id) == string::npos)
         {
-            cout << RED << "\nNo such record found!\n\n" << RESET;
+            cout << red << "\nNo such record found!\n\n" << reset;
         }
     }
 
