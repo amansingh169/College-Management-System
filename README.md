@@ -1,3 +1,33 @@
+<style>
+    .code{
+        background-color: #0004;
+        border-radius: 6px;
+        padding: 15px;
+        border: solid cornflowerblue 1px;
+        /* box-shadow: 0 0 10px lime; */
+    }
+
+    .pass-div{
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .pass{
+        margin: 0 10px;
+        background-color: #0001;
+        color: #0001;
+        border-radius: 6px;
+        padding: 2px 10px;
+        border: solid cornflowerblue 1px;
+        cursor: pointer;
+    }
+
+    .pass:active{
+        color: white;
+    }
+</style>
+
 # College Management System (CMS)
 
 The College Management System (CMS) is a command-line application that helps manage student and faculty data for different departments in a college.
@@ -38,33 +68,38 @@ Before you begin using the College Management System, ensure that your system me
 To use the College Management System, follow these steps:
 
 1. Open git bash in the desired directory, clone the project repository to your local machine using this command:
-   ```bash
+    <div class="code">
    git clone https://github.com/amansingh169/College-Management_system
+    </div>
+    <br>
 
 2. Now you can use any c++ compiler to build the application either in vscode (a code editor) or command prompt.
 
 3. Compile the code with the following instructions:
     1. Open a C++ compiler in the directory where the code is situated and type the following command:
-        ```bash
+        <div class="code">
         g++ cms.cpp -o cms
+        </div>
+        <br>
 
     2. Run the application:
-        ```bash
+        <div class="code">
         ./cms
+        </div>
 
 ## 3. User Roles and Access
 
 - **Head of Department (HoD):** 
     - Highest authority with access to all functions.
-    - Password: hod123
+    - <div class="pass-div">Password: <button class="pass">hod123</button> <--- Press & Hold to show</div>
 
 - **Coordinator:**
     - Limited access, unable to enter faculty data.
-    - Password: coordinator456
+    - <div class="pass-div">Password: <button class="pass">coordinator456</button></div>
 
 - **Faculty:**
     - Limited access, unable to enter both student and faculty data.
-    - Password: faculty789
+    - <div class="pass-div">Password: <button class="pass">faculty789</button></div>
 
 ## 4. Main Menu
 
